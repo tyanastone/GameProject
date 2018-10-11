@@ -21,4 +21,25 @@ var done = false;
 // track the players wins
 var wins = 0;
 
+// create a function to reset game
+function gameReset() {
+    
+    guessesRemaining = guessAmount
+    start = false
+    currentWordIndex = [Math.floor(Math.random() * randomWords.length)]
+
+    guesses = []
+    answers = []
+
+    document.getElementById("hangmanImage").src = ""
+
+    for (var i = 0; i < randomWords[currentWordIndex].length; i++) {
+        answers.push("_")
+    }
+    document.getElementById("pressKeyTryAgain").style.cssText = "display: none"
+    document.getElementById("gameover-image").style.cssText = "display: none"
+    document.getElementById("youwin-image").style.cssText = "display: none"
+
+    updateDisplay()
+}
 
