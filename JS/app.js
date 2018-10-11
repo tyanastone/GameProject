@@ -57,4 +57,17 @@ function updateDisplay() {
         done = true
     }
 }
+function updateHangmanImage() {
+    document.getElementById("hangmanImage").src = "../Images/" + (guessAmount-guessesRemaining) + ".jpg"
+}
+document.onkeydown = function(event) {
+    if (done) {
+        gameReset()
+        done = false
+    } else {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            makeGuess(event.key.toLowerCase())
+        }
+    }
+}
 
