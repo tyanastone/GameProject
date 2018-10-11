@@ -19,6 +19,6 @@ var start = false;
 // tracker to tell if game has ended
 var done = false;
 // track the players wins
-var winning = 0;
+var wins = 0;
 
 
