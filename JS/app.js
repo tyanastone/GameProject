@@ -43,3 +43,18 @@ function gameReset() {
     updateDisplay()
 }
 
+function updateDisplay() {
+    document.getElementById("totalWins").innerText = wins;
+    document.getElementById("currentWord").innerText = ""
+    for (var i = 0; i < answers.length; i++) {
+        document.getElementById("currentWord").innerText += answers[i]
+    }
+    document.getElementById("remainingGuesses").innerText = guessesRemaining
+    document.getElementById("guessedLetters").innerText = guesses
+    if (guessesRemaining <= 0) {
+        document.getElementById("gameover-image").style.cssText = "display: block"
+        document.getElementById("pressKeyTryAgain").style.cssText = "display: block"
+        done = true
+    }
+}
+
