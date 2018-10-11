@@ -70,4 +70,40 @@ document.onkeydown = function(event) {
         }
     }
 }
-
+function makeGuess(letter) {
+    if (guessesRemaining > 0) {
+        if (!start) {
+            start = true
+        }
+        if (guesses.indexOf(letter) === -1) {
+            guesses.push(letter)
+            evaluateGuess(letter)
+        }
+    }
+    updateDisplay()
+    checkWin()
+}
+function evaluateGuess(letter) {
+    var positions = []
+    for (var i = 0; i < randomWords[currentWordIndex].length; i++){
+        if (randomWords[currentWordIndex][i] === letter) {
+            positions.push(i)
+        }
+    }
+    if (positions.length <= 0) {
+        guessesRemaining--;
+        updateHangmanImage()
+    } else {
+        for (var i = 0; i < positions.length; i++){
+            answers[positions[i]] = letter
+        }
+    }
+}
+function checkWin() {
+    if (answers.indexOf("_") === -1) {
+        document.getElementById("youwin-image").style.cssText = "display: block"
+        document.getElementById("pressKeyTryAgain").style.cssText = "display: block"
+        wins++
+        done = true
+    }
+}
